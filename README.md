@@ -50,6 +50,8 @@ stock-price-prediction/
 
 Feel free to fork, modify, and contribute to this project!
 
+shubhamt2kumbhkar@gmail.com
+
 
 
 
