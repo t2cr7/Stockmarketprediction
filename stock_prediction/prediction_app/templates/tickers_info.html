@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticker Info - Stock Market Predictor</title>
+    <link rel="stylesheet" href="{% static 'indstyle.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-users"></i> Stocks</h2>
+            </div>
+            <div class="sidebar-welcome">
+                <p><i class="fas fa-user"></i> Welcome</p>
+                <span>Guest</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="{% url 'about' %}"><i class="fas fa-search"></i> About Us</a></li>
+                <li><a href="{% url 'tickers_info' %}" class="active"><i class="fas fa-list"></i> Ticker Info</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <h1><i class="fas fa-list"></i> Ticker Information</h1>
+            </header>
+
+            <!-- Ticker Info Section -->
+            <main>
+                <section class="ticker-info-content">
+                    <h2>Nifty 50</h2>
+                    <div class="table-container">
+                        {% if headers and rows %}
+                        <table>
+                            <thead>
+                                <tr>
+                                    {% for header in headers %}
+                                    <th>{{ header }}</th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in rows %}
+                                <tr>
+                                    {% for cell in row %}
+                                    <td>{{ cell }}</td>
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% else %}
+                        <p>No data available.</p>
+                        {% endif %}
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <p>© 2024 Stock Market Predictor. All Rights Reserved.</p>
+                <p>Developed by <strong><a href="https://www.linkedin.com/in/shubham-kumbhkar-860abc">Shubham Kumbhkar</a></strong></p>
+            </div>
+        </footer>
+    </div>
+
+    <style>
+        /* Page and Wrapper Styling */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .wrapper {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* Ticker Info Section Styling */
+        .ticker-info-content h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .table-container {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            background-color: #2c3e50;
+            color: white;
+            min-width: 200px;
+            padding: 20px 0;
+        }
+
+        .sidebar-header h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .sidebar-welcome {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-welcome p {
+            margin: 5px 0;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .nav-links li {
+            padding: 10px 20px;
+        }
+
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li a.active, .nav-links li a:hover {
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .nav-links li a i {
+            margin-right: 10px;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px 0;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+
+        footer strong {
+            font-weight: 600;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Stock Market Predictor</title>
+    <link rel="stylesheet" href="{% static 'indstyle.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-users"></i> Stocks</h2>
+            </div>
+            <div class="sidebar-welcome">
+                <p><i class="fas fa-user"></i> Welcome</p>
+                <span>Guest</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="{% url 'about' %}" class="active"><i class="fas fa-search"></i> About Us</a></li>
+                <li><a href="{% url 'tickers_info' %}"><i class="fas fa-list"></i> Ticker Info</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <h1><i class="fas fa-info-circle"></i> About Us</h1>
+            </header>
+
+            <!-- About Us Section -->
+            <main>
+                <section class="about-content">
+                    <h2>Who We Are</h2>
+                    <p>
+                        Welcome to the Stock Market Predictor! We are a group of passionate developers and data scientists
+                        committed to helping you make informed decisions in the stock market using advanced algorithms and machine learning techniques.
+                    </p>
+
+                    <h2>Our Mission</h2>
+                    <p>
+                        Our mission is to provide accurate and reliable stock market predictions by leveraging cutting-edge
+                        technology. We believe that anyone, from beginners to experts, should have access to the tools needed to succeed in the stock market.
+                    </p>
+
+                    <h2>Why Choose Us?</h2>
+                    <ul>
+                        <li>Reliable predictions powered by machine learning algorithms.</li>
+                        <li>Real-time updates and accurate historical data.</li>
+                        <li>Intuitive interface designed for users of all levels.</li>
+                        <li>Comprehensive stock data from various global markets.</li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+
+        <!-- Footer -->
+         <footer>
+            <div class="footer-content">
+                <p>© 2024 Stock Market Predictor. All Rights Reserved.</p>
+                <p>Developed by <strong><a href="https://www.linkedin.com/in/shubham-kumbhkar-860abc">Shubham Kumbhkar</a></strong></p>
+            </div>
+        </footer>
+    </div>
+
+
+    <style>
+        /* Similar to the style in index.html */
+
+        /* Page and Wrapper Styling */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .wrapper {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* About Us Section Styling */
+        .about-content h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .about-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #34495e;
+        }
+
+        .about-content ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #34495e;
+        }
+
+        .about-content ul li {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            background-color: #2c3e50;
+            color: white;
+            min-width: 200px;
+            padding: 20px 0;
+        }
+
+        .sidebar-header h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .sidebar-welcome {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-welcome p {
+            margin: 5px 0;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .nav-links li {
+            padding: 10px 20px;
+        }
+
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li a.active, .nav-links li a:hover {
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .nav-links li a i {
+            margin-right: 10px;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px 0;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+
+        footer strong {
+            font-weight: 600;
+        }
+    </style>
+</body>
+</html>

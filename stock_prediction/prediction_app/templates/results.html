@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results for {{ quote }}</title>
+    <link rel="stylesheet" href="{% static 'indstyle.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Center the stock information and set different styling */
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .stock-info {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            text-align: center;
+        }
+
+        .stock-info h2 {
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .stock-info ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .stock-info ul li {
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .prediction-results, .prediction-errors {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #fff;
+            width: 80%;
+            text-align: left;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .prediction-results h3, .prediction-errors h3 {
+            font-size: 1.6rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .graph-container {
+            margin-top: 30px;
+        }
+
+        .graph-container img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-users"></i> Stocks</h2>
+            </div>
+            <div class="sidebar-welcome">
+                <p><i class="fas fa-user"></i> Welcome</p>
+                <span>Guest</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="{% url 'about' %}"><i class="fas fa-search"></i> About Us</a></li>
+                <li><a href="{% url 'tickers_info' %}"><i class="fas fa-list"></i> Ticker Info</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <h1><i class="fas fa-chart-line"></i> Stock Market Predictor Results</h1>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Stock Information -->
+                <div class="stock-info">
+                    <h2>Stock Information</h2>
+                    <ul>
+                        <li><strong>Stock Name:</strong> {{ stock_info.name }}</li>
+                        <li><strong>Country:</strong> {{ stock_info.country }}</li>
+                        <li><strong>Open:</strong> {{ stock_info.open }}</li>
+                        <li><strong>Low:</strong> {{ stock_info.low }}</li>
+                        <li><strong>High:</strong> {{ stock_info.high }}</li>
+                        <li><strong>Close:</strong> {{ stock_info.close }}</li>
+                        <li><strong>Volume:</strong> {{ stock_info.volume }}</li>
+                    </ul>
+                </div>
+
+                <!-- Prediction Results -->
+                <div class="prediction-results">
+                    <h3>Prediction Results</h3>
+                    <ul>
+                        <li><strong>ARIMA Prediction:</strong> {{ arima_pred }}</li>
+                        <li><strong>LSTM Prediction:</strong> {{ lstm_pred }}</li>
+                        <li><strong>Linear Regression Prediction:</strong> {{ lr_pred }}</li>
+                    </ul>
+                </div>
+
+                <!-- Prediction Errors -->
+                <div class="prediction-errors">
+                    <h3>Prediction Errors (RMSE)</h3>
+                    <ul>
+                        <li><strong>ARIMA RMSE:</strong> {{ error_arima }}</li>
+                        <li><strong>LSTM RMSE:</strong> {{ error_lstm }}</li>
+                        <li><strong>Linear Regression RMSE:</strong> {{ error_lr }}</li>
+                    </ul>
+                </div>
+
+                <!-- Display Graphs -->
+                <div class="graph-container">
+                    <h3>Graphs</h3>
+                    <img src="{% static 'ARIMA.png' %}" alt="ARIMA Prediction Graph">
+                    <img src="{% static 'LSTM.png' %}" alt="LSTM Prediction Graph">
+                    <img src="{% static 'LR.png' %}" alt="Linear Regression Prediction Graph">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <p>© 2024 Stock Market Predictor. All Rights Reserved.</p>
+                <p>Developed by <strong><a href="https://www.linkedin.com/in/shubham-kumbhkar-860abc">Shubham Kumbhkar</a></strong></p>
+            </div>
+        </footer>
+    </div>
+
+    <style>
+        /* Footer styles */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px 0;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+
+        footer strong {
+            font-weight: 600;
+        }
+    </style>
+</body>
+
+</html>
